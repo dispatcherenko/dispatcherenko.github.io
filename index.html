@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="ru">
 
+`
+
 <head>
   <title>Lenni Art</title>
   <meta charset="UTF-8" />
@@ -9,6 +11,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Open+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Open+Sans&display=swap" rel="stylesheet">
+
+  <script src="scripts\jquery-3.7.1.min.js"></script>
+  <script src="scripts\jquery.selectric.min.js"></script>
+  <script src="scripts\jquery.mask.min.js"></script>
+  <script src="scripts\air-datepicker.js"></script>
+  <script src="scripts\jquery.validate.min.js"></script>
+  <script src="scripts\jquery.validate-init.js"></script>
 </head>
 
 <body class="body">
@@ -40,10 +50,12 @@
         <a href="#" class="btn page-header__user-btn">
           Войти
           <svg class="page-header__user-icon" width="21" height="18">
-            <use xlink:href="assets/icons/symbols.svg#user"></use>
+            <use xlink:href="assets/icons/symbols.svg#user">
+            </use>
           </svg>
         </a>
-        <button type="button" class="page-header__nav-toggle"></button>
+
+        <button id="js-navToggle" type="button" class="page-header__nav-toggle"></button>
       </div>
     </div>
   </header>
@@ -64,7 +76,7 @@
           Я хочу:
         </h2>
         <div class="partner__choice">
-          <button class="partner__event btn btn--red">Провести мероприятие</button>
+          <button id="js-eventOpenBtn" class="partner__event btn btn--red">Провести мероприятие</button>
           <button class="partner__rent btn">Стать арендатором</button>
 
         </div>
@@ -130,77 +142,81 @@
       <section class="upcoming home__upcoming">
         <div class="upcoming__top-border"></div>
         <div class="upcoming__container">
-          <div class="upcoming__wrapper">
-            <h2 class="upcoming__title section-title">МЕРОПРИЯТИЯ</h2>
-            <div class="upcoming__list">
-              <article class="event-card  upcoming__event-card">
-                <a href="#" class="event-card__link">
-                  <picture class="event-card__picture">
-                    <source type="image/webp" media="(max-width: 767px)" srcset="assets/images/events/Nirvana-mobile.webp" />
-                    <source type="image/webp" media="(min-width: 768px)" srcset="assets/images/events/Nirvana.webp" />
-                    <img src="assets/images/events/Nirvana.jpg" alt="nirvana" class="event-card__img" />
-                  </picture>
-                  <h4 class="event-card__title">Собираемся и слушаем альбом Nirvana</h4>
-                  <p class="event-card__description">Это третий альбом группы, выпущенный после смерти Курта Кобейна и первый, содержащий студийный материал.</p>
-                  <time datetime="2022-12-07T18:00" class="event-card__time">07.12.2022 | начало 18.00</time>
-                </a>
-              </article>
-              <article class="event-card  upcoming__event-card">
-                <a href="#" class="event-card__link">
-                  <picture class="event-card__picture">
-                    <source type="image/webp" media="(max-width: 767px)" srcset="assets/images/events/stuff-mobile.webp" />
-                    <source type="image/webp" media="(min-width: 768px)" srcset="assets/images/events/stuff.webp" />
-                    <img src="assets/images/events/stuff.jpg" alt="stuff" class="event-card__img" />
-                  </picture>
-                  <h4 class="event-card__title">Есть тема, нужно обсудить с HowStuffWorks</h4>
-                  <p class="event-card__description">Один из самых популярных подкастов в мире. В нём авторы объясняют, как устроены разные вещи.</p>
-                  <time datetime="2022-12-14T18:30" class="event-card__time">14.12.2022 | начало 18.30</time>
-                </a>
-              </article>
-              <article class="event-card  upcoming__event-card">
-                <a href="#" class="event-card__link">
-                  <picture class="event-card__picture">
-                    <source type="image/webp" media="(max-width: 767px)" srcset="assets/images/events/Sade-mobile.webp" />
-                    <source type="image/webp" media="(min-width: 768px)" srcset="assets/images/events/Sade.webp" />
-                    <img src="assets/images/events/Sade.jpg" alt="stuff" class="event-card__img" />
-                  </picture>
-                  <h4 class="event-card__title">Вечер | The Best of Sade</h4>
-                  <p class="event-card__description">Музыка группы имеет эклектичный характер, сочетая в себе элементы музыки соул, джаза, ритм-блюза и фанка.</p>
-                  <time datetime="2022-12-16T20:00" class="event-card__time">16.12.2022 | начало 20.00</time>
-                </a>
-              </article>
-            </div>
-            <div class="upcoming__slider">
-              <span>
-                <svg class="upcoming__arrow upcoming__arrow--rev" width="92" height="62">
-                  <use xlink:href="assets/icons/symbols.svg#link"></use>
-                </svg>
-              </span>
-
-              <div class="upcoming__pages">
-                <svg class="upcoming__page" width="15" height="2">
-                  <use xlink:href="assets/icons/symbols.svg#slider"></use>
-                </svg>
-                <svg class="upcoming__page" width="15" height="2">
-                  <use xlink:href="assets/icons/symbols.svg#slider"></use>
-                </svg>
-                <svg class="upcoming__page" width="15" height="2">
-                  <use xlink:href="assets/icons/symbols.svg#slider"></use>
-                </svg>
-                <svg class="upcoming__page" width="15" height="2">
-                  <use xlink:href="assets/icons/symbols.svg#slider"></use>
-                </svg>
-                <svg class="upcoming__page" width="15" height="2">
-                  <use xlink:href="assets/icons/symbols.svg#slider"></use>
-                </svg>
+          <h2 class="upcoming__title section-title">МЕРОПРИЯТИЯ</h2>
+          <div class="upcoming__swiper swiper swiper--3s js-swiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <article class="event-card  upcoming__event-card">
+                  <a href="#" class="event-card__link">
+                    <picture class="event-card__picture">
+                      <source type="image/webp" media="(max-width: 767px)" srcset="assets/images/events/Nirvana-mobile.webp" />
+                      <source type="image/webp" media="(min-width: 768px)" srcset="assets/images/events/Nirvana.webp" />
+                      <img src="assets/images/events/Nirvana.jpg" alt="nirvana" class="event-card__img" />
+                    </picture>
+                    <h4 class="event-card__title">Собираемся и слушаем альбом Nirvana</h4>
+                    <p class="event-card__description">Это третий альбом группы, выпущенный после смерти Курта Кобейна и первый, содержащий студийный материал.</p>
+                    <time datetime="2022-12-07T18:00" class="event-card__time">07.12.2022 | начало 18.00</time>
+                  </a>
+                </article>
+              </div>
+              <div class="swiper-slide">
+                <article class="event-card  upcoming__event-card">
+                  <a href="#" class="event-card__link">
+                    <picture class="event-card__picture">
+                      <source type="image/webp" media="(max-width: 767px)" srcset="assets/images/events/stuff-mobile.webp" />
+                      <source type="image/webp" media="(min-width: 768px)" srcset="assets/images/events/stuff.webp" />
+                      <img src="assets/images/events/stuff.jpg" alt="stuff" class="event-card__img" />
+                    </picture>
+                    <h4 class="event-card__title">Есть тема, нужно обсудить с HowStuffWorks</h4>
+                    <p class="event-card__description">Один из самых популярных подкастов в мире. В нём авторы объясняют, как устроены разные вещи.</p>
+                    <time datetime="2022-12-14T18:30" class="event-card__time">14.12.2022 | начало 18.30</time>
+                  </a>
+                </article>
               </div>
 
-              <span>
-                <svg class="upcoming__arrow" width="92" height="62">
+              <div class="swiper-slide">
+                <article class="event-card  upcoming__event-card">
+                  <a href="#" class="event-card__link">
+                    <picture class="event-card__picture">
+                      <source type="image/webp" media="(max-width: 767px)" srcset="assets/images/events/Sade-mobile.webp" />
+                      <source type="image/webp" media="(min-width: 768px)" srcset="assets/images/events/Sade.webp" />
+                      <img src="assets/images/events/Sade.jpg" alt="stuff" class="event-card__img" />
+                    </picture>
+                    <h4 class="event-card__title">Вечер | The Best of Sade</h4>
+                    <p class="event-card__description">Музыка группы имеет эклектичный характер, сочетая в себе элементы музыки соул, джаза, ритм-блюза и фанка.</p>
+                    <time datetime="2022-12-16T20:00" class="event-card__time">16.12.2022 | начало 20.00</time>
+                  </a>
+                </article>
+              </div>
+
+              <div class="swiper-slide">
+                <article class="event-card  upcoming__event-card">
+                  <a href="#" class="event-card__link">
+                    <picture class="event-card__picture">
+                      <source type="image/webp" media="(max-width: 767px)" srcset="assets/images/events/Sade-mobile.webp" />
+                      <source type="image/webp" media="(min-width: 768px)" srcset="assets/images/events/Sade.webp" />
+                      <img src="assets/images/events/Sade.jpg" alt="stuff" class="event-card__img" />
+                    </picture>
+                    <h4 class="event-card__title">Вечер | The Best of Sade</h4>
+                    <p class="event-card__description">Музыка группы имеет эклектичный характер, сочетая в себе элементы музыки соул, джаза, ритм-блюза и фанка.</p>
+                    <time datetime="2022-12-16T20:00" class="event-card__time">16.12.2022 | начало 20.00</time>
+                  </a>
+                </article>
+              </div>
+            </div>
+            <footer class="swiper-footer">
+              <button type="button" class="swiper-arrow-prev arrow arrow--left">
+                <svg class="arrow__icon" width="92" height="62">
                   <use xlink:href="assets/icons/symbols.svg#link"></use>
                 </svg>
-              </span>
-            </div>
+              </button>
+              <div class="swiper-pagination"></div>
+              <button type="button" class="swiper-arrow-next arrow">
+                <svg class="arrow__icon" width="92" height="62">
+                  <use xlink:href="assets/icons/symbols.svg#link"></use>
+                </svg>
+              </button>
+            </footer>
           </div>
           <a href="#" class="upcoming__link link">Смотреть все</a>
         </div>
@@ -326,8 +342,8 @@
                 </div>
               </div>
             </div>
-            <div class="contacts__map">
-              <img src="assets\images\map.jpg" alt="map" class="contacts__map-img">
+            <div class="contacts__map" id="js-contactsMap">
+
             </div>
           </div>
         </div>
@@ -358,15 +374,18 @@
         <a href="" class="page-footer__nav-link">Наши проекты</a>
         <a href="" class="page-footer__nav-link">Контакты</a>
       </nav>
-      <form action="" class="page-footer__form subscribe">
+      <form action="https://jsonplaceholder.typicode.com/posts" id="js-subscribeForm" class="page-footer__form subscribe">
         <h3 class="subscribe__title">Подпишись и будь в курсе происходящего</h3>
         <div class="subscribe__wrapper">
-          <input type="email" name="email" class="subscribe__input" placeholder="Email" required />
-          <b type="submit" class="subscribe__submit">Подписаться</b>
+          <div class="subscribe__input-wrapper">
+            <input type="email" name="email" class="subscribe__input" placeholder="Email" required />
+          </div>
+          <button type="submit" class="subscribe__submit">Подписаться</b>
         </div>
         <label class="subscribe__check check">
           <input type="checkbox" class="check__input" name="agree" required />
           <span class="check__mark"></span>
+
           <span class="check__label">Согласен на обработку персональных данных</span>
         </label>
       </form>
@@ -406,10 +425,10 @@
     </div>
   </footer>
 
-  <div class="pp" id="eventPP">
+  <div class="pp" id="js-eventPP">
     <div class="pp__wrapper">
       <div class="pp__sticky-close">
-        <button class="pp__x-btn x-btn">
+        <button class="pp__x-btn x-btn js-ppCloseBtn">
           <svg class="x-btn__icon">
             <use xlink:href="assets/icons/symbols.svg#x"></use>
           </svg>
@@ -420,7 +439,7 @@
           <br />
           и мы подберем площадку
         </h2>
-        <form class="pp__form form">
+        <form class="pp__form form" id="js-eventForm">
           <div class="form__list">
             <div class="form__field field">
               <h6 class="field__title">Формат мероприятия:</h6>
@@ -451,18 +470,21 @@
               <div class="form__field field">
                 <h6 class="field__title">Планируемое количество посетителей:</h6>
                 <select name="amount" class="field__select">
-                  <option value="20" class="select__text">до 20 человек</option>
+                  <option value="20">до 20 человек</option>
                   <option value="100">от 20 до 100 человек</option>
                   <option value="500">от 100 до 500 человек</option>
                   <option value="more">более 500 человек</option>
                 </select>
               </div>
-              <div class="form__field field">
+              <div class="form__field field js-dateField">
                 <h6 class="field__title">Дата проведения:</h6>
-                <div class="field__inputs">
-                  <input type="text" name="day" maxlength="2" class="field__text field__text--w55" placeholder="ДД" />
-                  <input type="text" name="month" maxlength="2" class="field__text field__text--w55" placeholder="ММ" />
-                  <input type="text" name="year" maxlength="4" class="field__text field__text--w110" placeholder="ГГГГ" />
+                <div class="field__date">
+                  <div class="field__date-inputs">
+                    <input class="field__date-input js-dateDay" type="text" placeholder="ДД" readonly />
+                    <input class="field__date-input js-dateMonth" type="text" placeholder="ММ" readonly />
+                    <input class="field__date-input field__date-input--year js-dateYear" type="text" placeholder="ГГГГ" readonly />
+                  </div>
+                  <input class="field__date-picker js-dateInput" type="text" name="date" readonly required />
                 </div>
               </div>
             </div>
@@ -482,7 +504,7 @@
 
               <label class="form__field form__field--w50 field">
                 <span class="field__label">Телефон*</span>
-                <input type="tel" name="phone_number" class="field__text" placeholder="+7 (___) ___ __ __" required />
+                <input class="field__text js-mobileMask" type="tel" placeholder="Телефон" name="phone" required />
               </label>
 
               <label class="form__field form__field--w50 field">
@@ -503,13 +525,17 @@
           <div class="form__btns">
             <button type="submit" class="form__btn btn">Отправить</button>
             <div class="form__close-button">
-              <button type="button" class="form__close">Закрыть</button>
+              <button type="button" class="form__close js-ppCloseBtn">Закрыть</button>
             </div>
           </div>
         </form>
       </div>
     </div>
   </div>
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
+  <script src="scripts\swiper.min.js"></script>
+  <script src="scripts\main.min.js"></script>
 </body>
 
 </html>

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <html lang="ru">
+`
 
 <head>
   <title>Lenni Art</title>
@@ -10,6 +11,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Open+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Open+Sans&display=swap" rel="stylesheet">
+
+  <script src="scripts\jquery-3.7.1.min.js"></script>
+  <script src="scripts\jquery.selectric.min.js"></script>
+  <script src="scripts\jquery.mask.min.js"></script>
+  <script src="scripts\air-datepicker.js"></script>
+  <script src="scripts\jquery.validate.min.js"></script>
+  <script src="scripts\jquery.validate-init.js"></script>
 </head>
 
 <body>
@@ -40,10 +49,12 @@
         <a href="#" class="btn page-header__user-btn">
           Войти
           <svg class="page-header__user-icon" width="21" height="18">
-            <use xlink:href="assets/icons/symbols.svg#user"></use>
+            <use xlink:href="assets/icons/symbols.svg#user">
+            </use>
           </svg>
         </a>
-        <button type="button" class="page-header__nav-toggle"></button>
+
+        <button id="js-navToggle" type="button" class="page-header__nav-toggle"></button>
       </div>
     </div>
   </header>
@@ -256,7 +267,7 @@
           Я хочу:
         </h2>
         <div class="partner__choice">
-          <button class="partner__event btn btn--red">Провести мероприятие</button>
+          <button id="js-eventOpenBtn" class="partner__event btn btn--red">Провести мероприятие</button>
           <button class="partner__rent btn">Стать арендатором</button>
 
         </div>
@@ -314,15 +325,18 @@
         <a href="" class="page-footer__nav-link">Наши проекты</a>
         <a href="" class="page-footer__nav-link">Контакты</a>
       </nav>
-      <form action="" class="page-footer__form subscribe">
+      <form action="https://jsonplaceholder.typicode.com/posts" id="js-subscribeForm" class="page-footer__form subscribe">
         <h3 class="subscribe__title">Подпишись и будь в курсе происходящего</h3>
         <div class="subscribe__wrapper">
-          <input type="email" name="email" class="subscribe__input" placeholder="Email" required />
-          <b type="submit" class="subscribe__submit">Подписаться</b>
+          <div class="subscribe__input-wrapper">
+            <input type="email" name="email" class="subscribe__input" placeholder="Email" required />
+          </div>
+          <button type="submit" class="subscribe__submit">Подписаться</b>
         </div>
         <label class="subscribe__check check">
           <input type="checkbox" class="check__input" name="agree" required />
           <span class="check__mark"></span>
+
           <span class="check__label">Согласен на обработку персональных данных</span>
         </label>
       </form>
